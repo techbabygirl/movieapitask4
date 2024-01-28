@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+class Movie{
+    constructor(title, genre){
+        this.tittle = title;
+        this.genre = genre;
+        this.isAvailaibe = true;
+    }
+
+   rentMovie(){
+if (this.isAvailaibe){
+    this.isAvailaibe = false;
+}else{
+    return false;
+}
+   }
+
+   returnMovie(){
+this.isAvailaibe = true;
+   }
+
+}
+
+// CUSTOMERS 
+class Customer{
+    constructor( name){
+        this.name = name;
+        this.rentMovies = []
+    }
+
+rentMovie(movie){
+    if(movie.rentMovie()){
+        this.rentMovies.push(movie);
+        return true
+    }else{
+        return false;
+    }
+}
+
+returnMovie(movie){
+    const index = this.rentMovies.indexOf(movie)
+if(index!== -1){
+    this.rentedMovies.splice(index, 1);
+    movie.returnMovie();
+    return true;
+}else{
+    return false;
+
+}
+}
+}
+
+class RentalStore {
+  constructor() {
+    this.movies = [];
+    this.customers = [];
+  }
+
+  addMovie(movie) {
+    this.movies.push(movie);
+  }
+
+  addCustomer(customer) {
+    this.customers.push(customer);
+  }
+  rentMovie(customer, movieTitle) {
+    const movie = this.findMovie(movieTitle);
+    if (movie && customer.rentMovie(movie)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+
+
+
+    </script>
+</body>
+</html>
